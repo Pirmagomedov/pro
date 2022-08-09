@@ -3,7 +3,7 @@ const express = require('express'),
   http = require('http').createServer(app),
   io = require('socket.io')(http)
 
-const host = 'http://178.208.92.108/'
+const host = '178.208.92.108'
 const port = 8089
 
 let clients = []
