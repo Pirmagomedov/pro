@@ -15,6 +15,7 @@ function onConnect (wsClient){
       var name = knam.name;
       var msg = knam.msg;
       clients.forEach(function(item){
+        console.log(item);
         item.send(JSON.stringify({name, msg})); 
       })
   });
