@@ -9,7 +9,7 @@ function onConnect (wsClient){
   
   wsClient.on("message", function(message){
     const jsonMessage = JSON.parse(message);
-    wsClient.send(JSON.stringify(msg: jsonMessage.msg));
+    wsClient.send(JSON.stringify({ msg: jsonMessage.msg }));
   });
   
   wsClient.on("close", function(){
