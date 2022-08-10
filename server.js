@@ -8,8 +8,8 @@ function onConnect (wsClient){
   console.log("NeW uSeR !");
   
   wsClient.on("message", function(message){
-    const jsonMessage = message.data;
-    wsClient.send(jsonMessage);
+    const jsonMessage = JSON.parse(message);
+    wsClient.send(JSON.stringify(msg: jsonMessage.msg));
   });
   
   wsClient.on("close", function(){
