@@ -8,7 +8,7 @@ function onConnect (wsClient){
   console.log("NeW uSeR !");
   
   wsClient.on("message", function(message){
-    console.log(message);
+    console.log(JSON.parse(message));
     wsClient.send("alishka - top");
   });
   
