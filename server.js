@@ -8,10 +8,12 @@ function onConnect (wsClient){
   console.log("NeW uSeR !");
   
   wsClient.on("message", function(message){
-    var knam = JSON.parse(message);
-    var name = knam.name;
-    var msg = knam.msg;
-    wsClient.send(JSON.stringify({name, msg}));
+    setTimeout(function(){
+      var knam = JSON.parse(message);
+      var name = knam.name;
+      var msg = knam.msg;
+      wsClient.send(JSON.stringify({name, msg}));
+    }, 10000);
   });
   
   wsClient.on("close", function(){
