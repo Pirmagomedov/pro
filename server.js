@@ -2,11 +2,16 @@ const WebSocket = require("ws");
 
 const wsServer = new WebSocket.Server({port: 9000});
 
+var list = [];
+
 wsServer.on("connection", onConnect);
 
 function onConnect (wsClient){
   console.log("NeW uSeR !");
-  wsClient.send("HeLlO !");
+  list.push(wsClient);
+  list.forEach(function(item){
+    item.send("HELOOOOOOOOO");
+  });
   
   wsClient.on("message", function(message){
     try{
