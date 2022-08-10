@@ -14,9 +14,9 @@ function onConnect (wsClient){
       var knam = JSON.parse(message);
       var name = knam.name;
       var msg = knam.msg;
-      clients.forEach(item){
+      clients.forEach(function(item){
         item.send(JSON.stringify({name, msg})); 
-      }
+      })
   });
   
   wsClient.on("close", function(){
