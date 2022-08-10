@@ -2,7 +2,7 @@ const WebSocket = require("ws");
 
 const wsServer = new WebSocket.Server({port: 9000});
 
-let clients = [];
+const clients = [];
 
 wsServer.on("connection", onConnect);
 
@@ -14,8 +14,8 @@ function onConnect (wsClient){
       var knam = JSON.parse(message);
       var name = knam.name;
       var msg = knam.msg;
-      for (const i in clients) {
-        i.send(JSON.stringify({name, msg})); 
+      clients.forEach(item){
+        item.send(JSON.stringify({name, msg})); 
       }
   });
   
