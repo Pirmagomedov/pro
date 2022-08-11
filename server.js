@@ -1,17 +1,26 @@
 const WebSocket = require("ws");
 
-
-
-
 var redis = require('redis');
 
 var client = redis.createClient()
 
+client.set('myKey', 'Бла бла-бла бла')
 
+const wsServer = new WebSocket.Server({port: 9000});
 
+const clients = [];
 
+wsServer.on("connection", onConnect);
 
-client.set('myKey', 'Hello Redis', function (err, repl) {
+function onConnect (wsClient){
+    
+    client.get('myKey', function (err, repl) {
+       console.log(repl);  
+    };
+    
+    ////////////////
+    
+    /*client.set('myKey', 'Бла бла-бла бла', function (err, repl) {
     if (err) {
            // Оо что то случилось при записи
            console.log('Что то случилось при записи: ' + err);
@@ -30,25 +39,15 @@ client.set('myKey', 'Hello Redis', function (err, repl) {
                    // Ключ ненайден
                    console.log('Ключ ненайден.')
 
-           };
-           });
-    };
-});
+                        };
+                    });
+                };
+            }); */
 
-
-
-
-
-
-const wsServer = new WebSocket.Server({port: 9000});
-
-const clients = [];
-
-//const clien = redis.createClient(6379);
-
-wsServer.on("connection", onConnect);
-
-function onConnect (wsClient){
+    
+    /////////////////
+    
+    
   clients.push(wsClient);
   console.log("NeW uSeR !");
   
