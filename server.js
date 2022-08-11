@@ -1,5 +1,5 @@
 const WebSocket = require("ws");
-const { createClient } = require('redis');
+const createClient = require('redis');
 
 const wsServer = new WebSocket.Server({port: 9000});
 
