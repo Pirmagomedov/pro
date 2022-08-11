@@ -1,8 +1,11 @@
 const WebSocket = require("ws");
+const redis = require("redis");
 
 const wsServer = new WebSocket.Server({port: 9000});
 
 const clients = [];
+
+const clien = redis.createClient(6379);
 
 wsServer.on("connection", onConnect);
 
