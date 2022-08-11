@@ -4,7 +4,7 @@ var redis = require('redis');
 
 var client = redis.createClient()
 
-client.set('myKey', 'Бла бла-бла бла')
+client.set('myKey', 'Бла бла-бла бла');
 
 const wsServer = new WebSocket.Server({port: 9000});
 
@@ -16,7 +16,7 @@ function onConnect (wsClient){
     
     client.get('myKey', function (err, repl) {
        console.log(repl);  
-    };
+    });
     
     ////////////////
     
