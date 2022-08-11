@@ -13,20 +13,11 @@ const clients = [];
 wsServer.on("connection", onConnect);
 
 function onConnect (wsClient){
-    
-    
-    
-    
-    
-    
-    
+
     client.get('myKey', function (err, repl) {
-       console.log(repl);  
+       console.log(repl);
     });
-    
-    
-    
-    
+
   clients.push(wsClient);
   console.log("NeW uSeR !");
   
@@ -35,7 +26,6 @@ function onConnect (wsClient){
       var name = knam.name;
       var msg = knam.msg;
       clients.forEach(function(item){
-        console.log(item);
         item.send(JSON.stringify({name, msg})); 
       })
   });
