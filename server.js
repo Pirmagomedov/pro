@@ -28,7 +28,7 @@ function onConnect (wsClient){
       clients.forEach(function(item){
         item.send(JSON.stringify({name, msg})); 
       })
-  });
+  }); 
   
   wsClient.on("close", function(){
     console.log("UsEr dEcOnNeCtEd !");
